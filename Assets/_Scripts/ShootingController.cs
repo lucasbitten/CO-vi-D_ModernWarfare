@@ -16,6 +16,8 @@ public class ShootingController : MonoBehaviour
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private float shootForce;
     private bool canShoot = true;
+    [SerializeField] private Vector3 shootOffset = Vector3.up;
+    [SerializeField] private Transform shootingTarget;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,29 +36,26 @@ public class ShootingController : MonoBehaviour
 
     void Update()
     {
-        // todo: make the mask goes in the correct direction
+
+        // Create a vector at the center of our camera's viewport
+        Vector3 lineOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+
+        // Draw a line in the Scene View  from the point lineOrigin in the direction of fpsCam.transform.forward * weaponRange, using the color green
+        Debug.DrawRay(lineOrigin, fpsCam.transform.forward * weaponRange, Color.green);
+
         if (Input.GetButtonDown("Fire1") && canShoot)
         {
             if (!Physics.Raycast(shootingPoint.position, shootingPoint.forward, 0.5f))
             {
                 GameObject mask = Instantiate(maskPrefab, shootingPoint.position, shootingPoint.rotation * Quaternion.AngleAxis(180, Vector3.up));
-                mask.GetComponent<Rigidbody>().AddForce(fpsCam.transform.forward * shootForce);
+                mask.GetComponent<Rigidbody>().AddForce((shootingTarget.position - shootingPoint.position).normalized* shootForce + shootOffset);
                 Destroy(mask.gameObject, 2);
 
             }
         }
 
-        // Create a vector at the center of our camera's viewport
-        Vector3 lineOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
-        Debug.Log(lineOrigin);
-
-        // Draw a line in the Scene View  from the point lineOrigin in the direction of fpsCam.transform.forward * weaponRange, using the color green
-        Debug.DrawRay(lineOrigin, fpsCam.transform.forward * weaponRange, Color.green);
-        Debug.DrawRay(shootingPoint.position, fpsCam.transform.forward * weaponRange, Color.blue);
 
         RaycastHit hit;
-
-
 
         if (Physics.Raycast(lineOrigin, fpsCam.transform.forward, out hit, weaponRange, hitLayer))
         {
