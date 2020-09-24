@@ -11,7 +11,7 @@ public class ShootingController : MonoBehaviour
     [SerializeField]private Camera fpsCam;                                
 
     [SerializeField] private LayerMask hitLayer;
-    [SerializeField] private Image dot;
+    [SerializeField] private Image crosshair;
     [SerializeField] private GameObject maskPrefab;
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private float shootForce;
@@ -49,7 +49,7 @@ public class ShootingController : MonoBehaviour
             {
                 GameObject mask = Instantiate(maskPrefab, shootingPoint.position, shootingPoint.rotation * Quaternion.AngleAxis(180, Vector3.up));
                 mask.GetComponent<Rigidbody>().AddForce((shootingTarget.position - shootingPoint.position).normalized* shootForce + shootOffset);
-                Destroy(mask.gameObject, 2);
+                Destroy(mask.gameObject, 10);
 
             }
         }
@@ -59,11 +59,11 @@ public class ShootingController : MonoBehaviour
 
         if (Physics.Raycast(lineOrigin, fpsCam.transform.forward, out hit, weaponRange, hitLayer))
         {
-            dot.color = Color.green;
+            crosshair.color = Color.green;
         }
         else
         {
-            dot.color = Color.red;
+            crosshair.color = Color.red;
 
         }
 
