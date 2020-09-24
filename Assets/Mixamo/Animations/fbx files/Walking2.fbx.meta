@@ -515,8 +515,8 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftFoot
       parentName: mixamorig:LeftLeg
-      position: {x: -0, y: 0.390997, z: 0}
-      rotation: {x: 0.5578493, y: -0.028109923, z: 0.040681627, w: 0.8284679}
+      position: {x: -0.000000004656613, y: 0.390997, z: 0}
+      rotation: {x: 0.54656607, y: 0.12895398, z: -0.028605944, w: 0.82693297}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftToeBase
       parentName: mixamorig:LeftFoot
@@ -611,7 +611,7 @@ ModelImporter:
     - name: mixamorig:LeftHandMiddle1
       parentName: mixamorig:LeftHand
       position: {x: 0.00902, y: 0.084356, z: -0.001415}
-      rotation: {x: 0.052453373, y: 0.03588893, z: -0.06311143, w: 0.9959808}
+      rotation: {x: 0.052453365, y: 0.03588893, z: -0.063111424, w: 0.9959808}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:LeftHandMiddle2
       parentName: mixamorig:LeftHandMiddle1

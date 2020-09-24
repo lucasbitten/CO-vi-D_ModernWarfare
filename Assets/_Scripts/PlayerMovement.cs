@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
-        controller.Move(move * (speed * Time.deltaTime));
+        controller.Move(move.normalized * (speed* Time.deltaTime));
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
