@@ -13,6 +13,7 @@ public class MaskScript : MonoBehaviour
             MaskPositionScript maskPosition = other.gameObject.GetComponent<MaskPositionScript>();
             if (!maskPosition.mask.activeSelf)
             {
+                maskPosition.npcController.hasMask = true;
                 maskPosition.animator.SetTrigger("HitMask");
                 maskPosition.mask.SetActive(true);
                 Destroy(this.gameObject);
