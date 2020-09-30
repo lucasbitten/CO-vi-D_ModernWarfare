@@ -8,9 +8,9 @@ public class MaskScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("MaskPosition"))
+        if (other.collider != null && other.collider.CompareTag("MaskPosition"))
         {
-            MaskPositionScript maskPosition = other.gameObject.GetComponent<MaskPositionScript>();
+            MaskPositionScript maskPosition = other.collider.gameObject.GetComponent<MaskPositionScript>();
             if (!maskPosition.mask.activeSelf)
             {
                 maskPosition.npcController.hasMask = true;

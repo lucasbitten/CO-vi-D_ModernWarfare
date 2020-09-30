@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum AnimationType
+{
+    Running,
+    Walking,
+    Sitting,
+    Talking,
+    Idling,
+    Listening
+}
+
 public class NPCController : MonoBehaviour
 {
-    private Animator anim;
     public bool hasMask;
-    public MaskPositionScript maskPosition;
     public GameObject indicator;
+    public AnimationType animation = AnimationType.Idling;
 
-    [Header("Animation Fields")]
-    [SerializeField] private bool running;
-    [SerializeField] private bool walking;
-    [SerializeField] private bool sitting;
-    [SerializeField] private bool talking;
-    [SerializeField] private bool idling;
-    [SerializeField] private bool listening;
+    private Animator animator;
+    private MaskPositionScript maskPosition;
 
     public void GetMaskPosition(MaskPositionScript maskPositionScript)
     {
@@ -24,7 +29,7 @@ public class NPCController : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         if (GameManager.Instance.difficulty == GameDifficulty.easy)
         {
@@ -48,23 +53,18 @@ public class NPCController : MonoBehaviour
             }
         }
 
+        animator.SetBool(animation.ToString(), true);
 
-        if (sitting)
+
+        if (animation == AnimationType.Sitting)
         {
-            anim.SetLayerWeight(1,1);
+            animator.SetLayerWeight(1,1);
+        }
+        else
+        {
+            animator.SetLayerWeight(2, 1);
+
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        anim.SetBool("Walking", walking);
-        anim.SetBool("Running", running);
-        anim.SetBool("Sitting", sitting);
-        anim.SetBool("Talking", talking);
-        anim.SetBool("Idling", idling);
-        anim.SetBool("Listening", listening);
-
-
-    }
+    
 }

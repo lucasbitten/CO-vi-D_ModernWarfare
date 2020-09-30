@@ -7,20 +7,20 @@ AvatarMask:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mask
-  m_Mask: 00000000000000000100000000000000000000000100000001000000000000000100000000000000000000000100000001000000
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
   m_Elements:
   - m_Path: 
     m_Weight: 1
   - m_Path: Body
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Bottoms
     m_Weight: 0
   - m_Path: Eyelashes
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Eyes
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hair
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: mixamorig:Hips
     m_Weight: 0
   - m_Path: mixamorig:Hips/mixamorig:LeftUpLeg

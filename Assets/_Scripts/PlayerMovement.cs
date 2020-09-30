@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
 
-    private float speed = 12f;
     [SerializeField] private float jumpHeight = 3f;
     [SerializeField] private float gravity = -9.8f;
     [SerializeField] private Transform groundCheck;
@@ -20,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private float mouseSensitivity = 3.5f;
     [SerializeField] private bool lockCursor = true;
-    private float cameraPitch = 0.0f;
+    private float cameraPitch;
     [SerializeField] private float maxAngle = 90f;
     [SerializeField] private float walkSpeed = 6.0f;
     [SerializeField] [Range(0.0f, 0.5f)] private float moveSmoothTime = 0.3f;
