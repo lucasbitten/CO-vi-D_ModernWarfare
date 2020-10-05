@@ -15,7 +15,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public GameDifficulty difficulty = GameDifficulty.easy;
-    
+    public DifficultyData easyData;
+    public DifficultyData normalData;
+    public DifficultyData hardData;
+    public DifficultyData currentDifficultyData;
 
     // Start is called before the first frame update
     void Awake()
@@ -27,16 +30,12 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
 
         DontDestroyOnLoad(this.gameObject);
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

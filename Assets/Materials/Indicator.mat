@@ -81,7 +81,7 @@ Material:
     - Color_C947124E: {r: 28.988234, g: 0.7588543, b: 3.0354173, a: 0}
     - Color_F3D46F2D: {r: 1, g: 0.1770834, b: 0, a: 1}
     - Vector2_83D71980: {r: 1, g: 0, b: 0, a: 0}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

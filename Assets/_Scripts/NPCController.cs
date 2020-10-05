@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 public enum AnimationType
 {
@@ -16,7 +16,8 @@ public enum AnimationType
 public class NPCController : MonoBehaviour
 {
     public bool hasMask;
-    public GameObject indicator;
+    public bool isInfected;
+    public Indicator indicator;
     public AnimationType animation = AnimationType.Idling;
 
     private Animator animator;
@@ -27,44 +28,37 @@ public class NPCController : MonoBehaviour
         maskPosition = maskPositionScript;
     }
 
+
+
+    public void Infected()
+    {
+        Infected infected = gameObject.AddComponent<Infected>();
+        isInfected = true;
+        infected.npcController = this;
+        indicator.SetIndicatorType();
+    }
+
     void Start()
     {
+        indicator.GetNPC(this);
+        indicator.SetIndicatorType();
+
+        if (isInfected)
+        {
+            Infected();
+        }
+
         animator = GetComponent<Animator>();
-
-        if (GameManager.Instance.difficulty == GameDifficulty.easy)
-        {
-            indicator.SetActive(true);
-        }
-        else
-        {
-            indicator.SetActive(false);
-
-        }
 
         if (maskPosition != null)
         {
-            if (maskPosition.npcController.hasMask)
-            {
-                maskPosition.mask.SetActive(true);
-            }
-            else
-            {
-                maskPosition.mask.SetActive(false);
-            }
+            maskPosition.mask.SetActive(maskPosition.npcController.hasMask);
         }
 
         animator.SetBool(animation.ToString(), true);
 
 
-        if (animation == AnimationType.Sitting)
-        {
-            animator.SetLayerWeight(1,1);
-        }
-        else
-        {
-            animator.SetLayerWeight(2, 1);
-
-        }
+        animator.SetLayerWeight(animation == AnimationType.Sitting ? 1 : 2, 1);
     }
     
 }

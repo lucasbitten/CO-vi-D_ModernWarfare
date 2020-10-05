@@ -18,10 +18,15 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: "Copied Avatar Rig Configuration mis-match. Transform hierarchy
-      does not match:\n\tTransform 'mixamorig:LeftEye' for human bone 'LeftEye' not
-      found\n"
-    rigImportWarnings: 
+    rigImportErrors: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'mixamorig:LeftUpLeg'
+      : position error = 11.044816 mm\n\t'mixamorig:LeftLeg' : position error = 15.112080
+      mm\n\t'mixamorig:LeftFoot' : position error = 11.978261 mm\n\t'mixamorig:LeftToeBase'
+      : position error = 15.547730 mm\n\t'mixamorig:RightUpLeg' : position error
+      = 14.326341 mm\n\t'mixamorig:RightLeg' : position error = 15.617455 mm\n\t'mixamorig:RightFoot'
+      : position error = 11.847878 mm\n\t'mixamorig:RightToeBase' : position error
+      = 18.238388 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 

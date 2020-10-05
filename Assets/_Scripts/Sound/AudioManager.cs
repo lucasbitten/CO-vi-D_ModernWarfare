@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
@@ -34,12 +35,28 @@ public class AudioManager : MonoBehaviour
             sounds[i].source.volume = sounds[i].volume;
             sounds[i].source.pitch = sounds[i].pitch;
             sounds[i].source.loop = sounds[i].loop;
+            sounds[i].source.playOnAwake = sounds[i].playOnAwake;
+
             if (mixer != null)
             {
                 sounds[i].source.outputAudioMixerGroup = mixer;
 
             }
         }
+    }
+
+    public Sound GetCoughingSound()
+    {
+        List<Sound> coughingSounds = new List<Sound>();
+
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (sounds[i].name.Contains("Coughing"))
+            {
+                coughingSounds.Add(sounds[i]);
+            }
+        }
+        return coughingSounds[Random.Range(0, coughingSounds.Count)];
     }
 
     public void Stop()
